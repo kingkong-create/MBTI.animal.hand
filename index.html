@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline Document Translator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero__copy">
+          <p class="eyebrow">Web preview now · EXE-ready later</p>
+          <h1 id="page-title">Check the offline document translator prototype.</h1>
+          <p class="hero__lead">
+            This screen is ready to publish as a static web preview today. Later,
+            the same interface can be wrapped as a desktop EXE with local OCR,
+            file parsers, and an offline translation engine.
+          </p>
+          <div class="hero__actions" aria-label="Primary actions">
+            <label class="button button--primary" for="file-input">Insert documents</label>
+            <a class="button button--ghost" href="#supported-formats">View supported formats</a>
+          </div>
+        </div>
+
+        <aside class="status-card" aria-label="Offline translation status">
+          <div class="status-card__badge">Prototype checkpoint</div>
+          <h2>Built for web review first</h2>
+          <ul>
+            <li>Run locally or host as static web files.</li>
+            <li>File type recognition runs in the browser.</li>
+            <li>EXE packaging can be added after the workflow is approved.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="workspace" aria-labelledby="workspace-title">
+        <div class="drop-zone" id="drop-zone" tabindex="0" role="button" aria-describedby="drop-help">
+          <input id="file-input" type="file" multiple accept=".pdf,.ppt,.pptx,.hwp,.hwpx,.xls,.xlsx,.doc,.docx,.jpg,.jpeg,.png,.webp,.tif,.tiff,.bmp,image/*,application/pdf" />
+          <div class="drop-zone__icon" aria-hidden="true">⇪</div>
+          <h2 id="workspace-title">Insert or drag files here</h2>
+          <p id="drop-help">Documents are identified locally and added to the translation queue.</p>
+        </div>
+
+        <div class="settings-panel" aria-labelledby="settings-title">
+          <h2 id="settings-title">Translation setup</h2>
+          <label>
+            Source language
+            <select id="source-language">
+              <option value="auto">Auto detect</option>
+              <option value="ko">Korean</option>
+              <option value="en">English</option>
+              <option value="ja">Japanese</option>
+              <option value="zh">Chinese</option>
+            </select>
+          </label>
+          <label>
+            Translate to
+            <select id="target-language">
+              <option value="en">English</option>
+              <option value="ko">Korean</option>
+              <option value="ja">Japanese</option>
+              <option value="zh">Chinese</option>
+              <option value="es">Spanish</option>
+            </select>
+          </label>
+          <label>
+            Output style
+            <select id="output-style">
+              <option value="layout">Keep original layout</option>
+              <option value="side-by-side">Side-by-side comparison</option>
+              <option value="text-only">Text only</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="roadmap" aria-labelledby="roadmap-title">
+        <p class="eyebrow">Production path</p>
+        <h2 id="roadmap-title">From web preview to desktop EXE</h2>
+        <div class="roadmap-grid">
+          <article>
+            <strong>1. Check the screen</strong>
+            <span>Use this browser version to confirm layout, supported formats, and user flow.</span>
+          </article>
+          <article>
+            <strong>2. Connect local engines</strong>
+            <span>Add document parsers, OCR, and an offline translation runtime behind this interface.</span>
+          </article>
+          <article>
+            <strong>3. Package as EXE</strong>
+            <span>Wrap the approved web UI with a desktop shell such as Electron or Tauri.</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="queue" aria-labelledby="queue-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Recognition queue</p>
+            <h2 id="queue-title">Files awaiting translation</h2>
+          </div>
+          <button class="button button--secondary" id="clear-button" type="button">Clear queue</button>
+        </div>
+        <ul class="file-list" id="file-list" aria-live="polite">
+          <li class="file-list__empty">No files inserted yet.</li>
+        </ul>
+      </section>
+
+      <section class="formats" id="supported-formats" aria-labelledby="formats-title">
+        <p class="eyebrow">Supported inputs</p>
+        <h2 id="formats-title">Basic format recognition</h2>
+        <div class="format-grid" id="format-grid"></div>
+      </section>
+    </main>
+
+    <template id="file-row-template">
+      <li class="file-row">
+        <div class="file-row__icon" aria-hidden="true"></div>
+        <div>
+          <strong class="file-row__name"></strong>
+          <p class="file-row__meta"></p>
+        </div>
+        <span class="file-row__tag"></span>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

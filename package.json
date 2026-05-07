@@ -1,0 +1,11 @@
+{
+  "name": "offline-document-translator-preview",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static web preview for an offline document translation tool that can later be packaged as a desktop EXE.",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "start:open": "node scripts/serve.js --open",
+    "check": "node --check app.js && node --check scripts/serve.js && node --check scripts/validate_preview.js && node scripts/validate_preview.js"
+  }
+}
