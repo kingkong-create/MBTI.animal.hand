@@ -1,0 +1,402 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --ink: #152032;
+  --muted: #667085;
+  --line: #d9e1ef;
+  --primary: #315cf6;
+  --primary-dark: #2447c4;
+  --primary-soft: #e8edff;
+  --success: #0f8a5f;
+  --shadow: 0 24px 60px rgba(36, 52, 92, 0.14);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(49, 92, 246, 0.16), transparent 32rem),
+    linear-gradient(135deg, #f8fbff 0%, var(--bg) 58%, #edf2ff 100%);
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.hero,
+.workspace,
+.queue,
+.formats {
+  margin-bottom: 24px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.hero__copy,
+.status-card,
+.drop-zone,
+.settings-panel,
+.roadmap,
+.queue,
+.formats {
+  border: 1px solid rgba(217, 225, 239, 0.8);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.hero__copy {
+  padding: 52px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 760px;
+  margin-bottom: 18px;
+  font-size: clamp(2.25rem, 5vw, 4.85rem);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+}
+
+h2 {
+  margin-bottom: 14px;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  letter-spacing: -0.035em;
+}
+
+.hero__lead {
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.hero__actions,
+.section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.button--primary {
+  color: #fff;
+  background: var(--primary);
+}
+
+.button--primary:hover,
+.button--primary:focus-visible {
+  background: var(--primary-dark);
+}
+
+.button--ghost,
+.button--secondary {
+  color: var(--primary);
+  border-color: var(--line);
+  background: #fff;
+}
+
+.status-card {
+  padding: 30px;
+}
+
+.status-card__badge {
+  display: inline-flex;
+  margin-bottom: 28px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--success);
+  background: #e7f8f1;
+  font-weight: 800;
+}
+
+.status-card ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+}
+
+.drop-zone {
+  position: relative;
+  min-height: 310px;
+  display: grid;
+  place-items: center;
+  padding: 34px;
+  text-align: center;
+  border-style: dashed;
+}
+
+.drop-zone.is-dragging {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.drop-zone input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drop-zone__icon {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  border-radius: 24px;
+  color: var(--primary);
+  background: var(--primary-soft);
+  font-size: 2.5rem;
+}
+
+.drop-zone p,
+.file-row__meta {
+  color: var(--muted);
+}
+
+.settings-panel {
+  padding: 26px;
+}
+
+.settings-panel label {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+select {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0 12px;
+  color: var(--ink);
+  background: #fff;
+  font: inherit;
+}
+
+.roadmap,
+.queue,
+.formats {
+  padding: 28px;
+}
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.roadmap-grid article {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.roadmap-grid strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.roadmap-grid span {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.section-heading {
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.file-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.file-list__empty,
+.file-row {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.file-list__empty {
+  padding: 22px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.file-row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+}
+
+.file-row__icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: var(--primary-soft);
+  font-weight: 900;
+}
+
+.file-row__name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-row__meta {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+}
+
+.file-row__tag {
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--primary);
+  background: var(--primary-soft);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.format-card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.format-card strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.format-card span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 860px) {
+  .hero,
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__copy {
+    padding: 34px;
+  }
+
+  .roadmap-grid,
+  .format-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .app-shell {
+    width: min(100% - 20px, 1180px);
+    padding: 20px 0;
+  }
+
+  .hero__copy,
+  .status-card,
+  .drop-zone,
+  .settings-panel,
+  .roadmap,
+  .queue,
+  .formats {
+    border-radius: 20px;
+  }
+
+  .file-row {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .file-row__tag {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .roadmap-grid,
+  .format-grid {
+    grid-template-columns: 1fr;
+  }
+}
